@@ -1,0 +1,38 @@
+---
+title: "Quarto Presentation Theme"
+subtitle: "A template file for Quarto revealjs slides"
+author: "[Nicola Rennie](https://nrennie.rbind.io/)"
+format:
+  nrSlides-revealjs:
+    embed-resources: true
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished presentation.
+To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+## Bullets
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+## Code
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+#| echo: true
+1 + 1
+```
+
+You can also add `text marked as code`! 
+
+# New topic! {background-color="#2F4F4F"}
+
+To make a slide like this, use:
+
+    # Section title {background-color="#2F4F4F"}
+
