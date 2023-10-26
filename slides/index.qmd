@@ -5,34 +5,24 @@ author: "[Nicola Rennie](https://nrennie.rbind.io/)"
 format:
   nrSlides-revealjs:
     embed-resources: true
+filters:
+  - snow
 ---
 
-## Quarto
+## About Me
 
-Quarto enables you to weave together content and executable code into a finished presentation.
-To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+# Christmas in R {background-color="#2F4F4F"}
 
-## Bullets
-
-When you click the **Render** button a document will be generated that includes:
-
--   Content authored with markdown
--   Output from executable code
-
-## Code
-
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+## {christmas}
 
 ```{r}
-#| echo: true
-1 + 1
+christmas::xmasepitree(year = 2023)
 ```
 
-You can also add `text marked as code`! 
+# Christmas Cards in R {background-color="#2F4F4F"}
 
-# New topic! {background-color="#2F4F4F"}
+# Sending Christmas Cards in R {background-color="#2F4F4F"}
 
-To make a slide like this, use:
+## 
 
-    # Section title {background-color="#2F4F4F"}
-
+Contact
