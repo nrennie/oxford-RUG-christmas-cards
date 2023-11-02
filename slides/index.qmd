@@ -131,7 +131,7 @@ install.packages(pkgs)
 #| echo: true
 #| output-location: column
 library(ggplot2)
-s1 = ggplot() +
+s1 <- ggplot() +
   theme_void() +
   theme(
     plot.background = element_rect(fill = "#0e1c2e")
@@ -139,7 +139,46 @@ s1 = ggplot() +
 s1
 ```
 
-# Sending Christmas Cards in R {background-color="#2F4F4F"}
+# Sending Christmas cards in R {background-color="#2F4F4F"}
+
+## {ggirl}
+
+::: columns
+::: {.column}
+
+```{r}
+#| eval: false
+#| echo: true
+#| label: ggirl
+library(ggirl)
+contact_email <- "fakeemailforreal@gmail.com"
+
+send_address_1 <- address(
+  name = "Fake Personname", address_line_1 = "250 North Ave",
+  city = "Boston", state = "MA",
+  postal_code = "22222", country = "US"
+)
+
+message_1 <- "This plot made me think of you!"
+
+ggpostcard(plot, contact_email, messages = message_1, send_addresses = send_address_1)
+```
+
+:::
+
+::: {.column}
+
+![](images/ggirl.png){fig-align="center" fig-alt="Hex sticker for ggirl package" width="100%"}
+
+*by Jacqueline Nolis*
+
+:::
+
+:::
+
+## {ggirl}
+
+![](images/ggirl-examples.png){fig-align="center" fig-alt="Screenshot of ggirl example from GitHub" width="100%"}
 
 ## 
 
