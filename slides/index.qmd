@@ -1,7 +1,8 @@
 ---
-title: "Quarto Presentation Theme"
-subtitle: "A template file for Quarto revealjs slides"
+title: "Making Christmas Cards in R"
+subtitle: "Oxford R User Group<br><small>27 November 2023</small>"
 author: "[Nicola Rennie](https://nrennie.rbind.io/)"
+footer: "[nrennie.github.io/oxford-RUG-christmas-cards](https://nrennie.github.io/oxford-RUG-christmas-cards)"
 format:
   nrSlides-revealjs:
     embed-resources: true
@@ -11,18 +12,153 @@ filters:
 
 ## About Me
 
+::: columns
+::: {.column .right}
+
+Lecturer in Health Data Science at [Lancaster University](https://chicas.lancaster-university.uk/).
+
+<br>
+
+Academic background in statistics, and experience in data science consultancy.
+
+<br>
+
+Blog about R and data science at [nrennie.rbind.io/blog](https://nrennie.rbind.io/blog/).
+
+:::
+
+::: {.column}
+
+![](images/lancs.jpg){fig-align="center" fig-alt="photo of lancaster castle and canal" width=80%}
+
+:::
+:::
+
 # Christmas in R {background-color="#2F4F4F"}
 
 ## {christmas}
 
+::: columns 
+::: {.column}
+
 ```{r}
-christmas::xmasepitree(year = 2023)
+#| label: christmas
+#| echo: true
+#| eval: false
+library(christmas)
+xmassnowman(year = 2023)
 ```
 
-# Christmas Cards in R {background-color="#2F4F4F"}
+:::
+
+::: {.column}
+
+![](images/snowman.png){fig-align="center" fig-alt="Cartoon snowman" width="100%"}
+
+:::
+:::
+
+# Let's build a snowman! {background-color="#2F4F4F"}
+
+## R packages we need
+
+::: columns 
+::: {.column}
+
+* {ggplot2}: for drawing plots
+* {ggforce}: for drawing circles
+* {sf}: for working with spatial data
+
+:::
+
+::: {.column}
+
+```{r}
+#| label: pkgs
+#| eval: false
+#| echo: true
+pkgs <- c("ggplot2", "ggforce", "sf")
+install.packages(pkgs)
+```
+
+:::
+:::
+
+## What makes a snowman?
+
+::: {.fragment}
+
+* Head and body
+
+* Buttons and eyes
+
+* Hat 
+
+* Arms
+
+* Nose
+
+* Background
+
+  * Sky
+  * Snowflakes
+  * Snow
+
+:::
+
+## What makes a snowman?
+
+* Head and body (circles with `geom_circle()`)
+
+* Buttons and eyes (points with `geom_point()`)
+
+* Hat (rectangles with `geom_rect()`)
+
+* Arms (lines with `geom_segment()`)
+
+* Nose (polygon with `geom_sf()`)
+
+* Background
+
+  * Sky (styling with `theme()`)
+  * Snowflakes (points with `geom_point()`)
+  * Snow (rectangle with `geom_rect()`)
+  
+## Starting with the background
+
+```{r}
+#| eval: true
+#| echo: true
+#| output-location: column
+library(ggplot2)
+s1 = ggplot() +
+  theme_void() +
+  theme(
+    plot.background = element_rect(fill = "#0e1c2e")
+  )
+s1
+```
 
 # Sending Christmas Cards in R {background-color="#2F4F4F"}
 
 ## 
 
-Contact
+::: columns
+::: {.column}
+
+{{< fa brands linkedin >}} [nicola-rennie](https://www.linkedin.com/in/nicola-rennie/)
+
+{{< fa brands twitter >}} [@nrennie35](https://twitter.com/nrennie35)
+
+{{< fa brands mastodon >}} [fosstodon.org/@nrennie](https://fosstodon.org/@nrennie)
+
+{{< fa brands github >}} [nrennie](https://github.com/nrennie)
+
+{{< fa globe >}} [nrennie.rbind.io](https://nrennie.rbind.io/)
+
+:::
+::: {.column}
+
+![](images/lancs.png){fig-align="center" fig-alt="ggflowchart hex sticker logo" width="70%"}
+:::
+:::
