@@ -6,8 +6,8 @@ footer: "[nrennie.github.io/oxford-RUG-christmas-cards](https://nrennie.github.i
 format:
   nrSlides-revealjs:
     embed-resources: true
-filters:
-  - snow
+fig-height: 6
+fig-width: 6
 ---
 
 ## About Me
@@ -53,7 +53,7 @@ xmassnowman(year = 2023)
 
 ::: {.column}
 
-![](images/snowman.png){fig-align="center" fig-alt="Cartoon snowman" width="100%"}
+![](images/snowman.png){fig-align="center" fig-alt="Cartoon snowman" width=90%}
 
 :::
 :::
@@ -86,7 +86,7 @@ install.packages(pkgs)
 
 ## What makes a snowman?
 
-::: {.fragment}
+::: {.incremental}
 
 * Head and body
 
@@ -124,9 +124,10 @@ install.packages(pkgs)
   * Snowflakes (points with `geom_point()`)
   * Snow (rectangle with `geom_rect()`)
   
-## Starting with the background
+## Starting with the sky...
 
 ```{r}
+#| label: snowman1
 #| eval: true
 #| echo: true
 #| output-location: column
@@ -134,12 +135,202 @@ library(ggplot2)
 s1 <- ggplot() +
   theme_void() +
   theme(
-    plot.background = element_rect(fill = "#0e1c2e")
+    plot.background = element_rect(
+      fill = "#0e1c2e"
+      )
   )
 s1
 ```
 
+## Add some snow...
+
+```{r}
+#| label: snowman2
+#| eval: true
+#| echo: true
+#| output-location: column
+s2 <- s1 +
+  annotate(
+    geom = "rect",
+    xmin = 0, xmax = 1,
+    ymin = 0, ymax = 0.2,
+    fill = "gray98",
+    colour = "gray98"
+  ) +
+  xlim(0, 1) +
+  ylim(0, 1) +
+  coord_fixed(expand = FALSE)
+s2
+```
+
+
+## ...and some snowflakes!
+
+```{r}
+#| label: snowman3
+#| eval: true
+#| echo: true
+#| output-location: column
+set.seed(20231225)
+n <- 100
+snowflakes <- data.frame(
+  x = runif(n),
+  y = runif(n)
+)
+s3 <- s2 +
+  geom_point(
+    data = snowflakes,
+    mapping = aes(
+      x = x,
+      y = y
+    ),
+    colour = "white",
+    pch = 8
+  )
+s3
+```
+
+## Build the snowman!
+
+```{r}
+#| label: snowman4
+#| eval: true
+#| echo: true
+#| output-location: column
+library(ggforce)
+s4 <- s3 +
+  geom_circle(
+    data = data.frame(
+      x0 = c(0.6, 0.6),
+      y0 = c(0.3, 0.5),
+      r = c(0.15, 0.1)
+    ),
+    mapping = aes(x0 = x0, y0 = y0, r = r),
+    fill = "white",
+    colour = "white"
+  )
+s4
+```
+
+## Add some rocks for buttons and eyes...
+
+```{r}
+#| label: snowman5
+#| eval: true
+#| echo: true
+#| output-location: column
+s5 <- s4 +
+  geom_point(
+    data = data.frame(
+      x = c(0.6, 0.6, 0.6, 0.57, 0.62),
+      y = c(0.25, 0.3, 0.35, 0.52, 0.52),
+      size = runif(5, 2, 4.5)
+    ),
+    mapping = aes(x = x, y = y, size = size)
+  ) +
+  scale_size_identity()
+s5
+```
+
+
+## and a hat!
+
+```{r}
+#| label: snowman6
+#| eval: true
+#| echo: true
+#| output-location: column
+s6 <- s5 +
+  annotate(
+    geom = "rect",
+    xmin = 0.46,
+    xmax = 0.74,
+    ymin = 0.56,
+    ymax = 0.6,
+    fill = "brown"
+  ) +
+  annotate(
+    geom = "rect",
+    xmin = 0.5,
+    xmax = 0.7,
+    ymin = 0.56,
+    ymax = 0.73,
+    fill = "brown"
+  )
+s6
+```
+
+## Create a carror for a nose with {sf}...
+
+```{r}
+#| label: carrot
+#| eval: true
+#| echo: true
+#| output-location: column
+library(sf)
+nose_pts <- matrix(
+  c(
+    0.6, 0.5,
+    0.65, 0.48,
+    0.6, 0.46,
+    0.6, 0.5
+  ),
+  ncol = 2,
+  byrow = TRUE
+)
+nose <- st_polygon(list(nose_pts))
+plot(nose)
+```
+
+## ... and add it to the snowman
+
+```{r}
+#| label: snowman7
+#| eval: true
+#| echo: true
+#| output-location: column
+s7 <- s6 +
+  geom_sf(
+    data = nose,
+    fill = "orange",
+    colour = "orange"
+  ) +
+  coord_sf(expand = FALSE)
+s7
+```
+
+## Finally add a Christmas message!
+
+```{r}
+#| label: snowman8
+#| eval: true
+#| echo: true
+#| output-location: column
+s8 <- s7 +
+  annotate(
+    geom = "text",
+    x = 0.5,
+    y = 0.95,
+    label = "Merry Christmas",
+    colour = "red3",
+    fontface = "bold",
+    size = 9
+  ) +
+  annotate(
+    geom = "text",
+    x = 0.5,
+    y = 0.07,
+    label = "To ...\n From ...",
+    colour = "red3",
+    fontface = "bold",
+    size = 5
+  )
+s8
+```
+
 # Sending Christmas cards in R {background-color="#2F4F4F"}
+
+## Email options
 
 ## {ggirl}
 
@@ -161,16 +352,21 @@ send_address_1 <- address(
 
 message_1 <- "This plot made me think of you!"
 
-ggpostcard(plot, contact_email, messages = message_1, send_addresses = send_address_1)
+ggpostcard(
+  plot,
+  contact_email,
+  messages = message_1,
+  send_addresses = send_address_1
+)
 ```
 
 :::
 
 ::: {.column}
 
-![](images/ggirl.png){fig-align="center" fig-alt="Hex sticker for ggirl package" width="100%"}
+![](images/ggirl.png){fig-align="center" fig-alt="Hex sticker for ggirl package" width=70%}
 
-*by Jacqueline Nolis*
+*by [Jacqueline Nolis](https://github.com/jnolis/ggirl)*
 
 :::
 
@@ -198,6 +394,7 @@ ggpostcard(plot, contact_email, messages = message_1, send_addresses = send_addr
 :::
 ::: {.column}
 
-![](images/lancs.png){fig-align="center" fig-alt="ggflowchart hex sticker logo" width="70%"}
+![](images/lancs.jpg){fig-align="center" fig-alt="ggflowchart hex sticker logo" width=70%}
+
 :::
 :::

@@ -13,8 +13,10 @@ s1
 # snow on ground
 s2 <- s1 +
   annotate(
-    geom = "rect", xmin = 0, xmax = 1, ymin = 0, ymax = 0.2,
-    fill = "gray98", colour = "gray98", alpha = 1
+    geom = "rect",
+    xmin = 0, xmax = 1,
+    ymin = 0, ymax = 0.2,
+    fill = "gray98", colour = "gray98"
   ) +
   xlim(0, 1) +
   ylim(0, 1) +
