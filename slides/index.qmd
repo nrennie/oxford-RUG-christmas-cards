@@ -408,6 +408,10 @@ Slides: [nrennie.github.io/oxford-RUG-christmas-cards](https://nrennie.github.io
 
 <br>
 
+Posit Cloud: [posit.cloud/content/6973285](https://posit.cloud/content/6973285)
+
+<br>
+
 GitHub: [github.com/nrennie/oxford-RUG-christmas-cards](https://github.com/nrennie/oxford-RUG-christmas-cards)
 
 :::
