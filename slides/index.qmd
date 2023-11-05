@@ -46,14 +46,14 @@ Blog about R and data science at [nrennie.rbind.io/blog](https://nrennie.rbind.i
 #| echo: true
 #| eval: false
 library(christmas)
-xmassnowman(year = 2023)
+xmasepitree(year = 2023)
 ```
 
 :::
 
 ::: {.column}
 
-![](images/snowman.png){fig-align="center" fig-alt="Cartoon snowman" width=90%}
+![](images/epitree.png){fig-align="center" fig-alt="Christmas tree of statistical words" width=90%}
 
 :::
 :::
@@ -98,11 +98,11 @@ install.packages(pkgs)
 
 * Nose
 
-* Background
+* Sky
 
-  * Sky
-  * Snowflakes
-  * Snow
+* Snowflakes
+
+* Snow
 
 :::
 
@@ -118,11 +118,11 @@ install.packages(pkgs)
 
 * Nose (polygon with `geom_sf()`)
 
-* Background
+* Sky (styling with `theme()`)
 
-  * Sky (styling with `theme()`)
-  * Snowflakes (points with `geom_point()`)
-  * Snow (rectangle with `geom_rect()`)
+* Snowflakes (points with `geom_point()`)
+
+* Snow (rectangle with `geom_rect()`)
   
 ## Starting with the sky...
 
@@ -243,18 +243,14 @@ s5
 s6 <- s5 +
   annotate(
     geom = "rect",
-    xmin = 0.46,
-    xmax = 0.74,
-    ymin = 0.56,
-    ymax = 0.6,
+    xmin = 0.46, xmax = 0.74,
+    ymin = 0.56, ymax = 0.6,
     fill = "brown"
   ) +
   annotate(
     geom = "rect",
-    xmin = 0.5,
-    xmax = 0.7,
-    ymin = 0.56,
-    ymax = 0.73,
+    xmin = 0.5, xmax = 0.7,
+    ymin = 0.56, ymax = 0.73,
     fill = "brown"
   )
 s6
@@ -309,28 +305,44 @@ s7
 s8 <- s7 +
   annotate(
     geom = "text",
-    x = 0.5,
-    y = 0.95,
+    x = 0.5, y = 0.95,
     label = "Merry Christmas",
     colour = "red3",
-    fontface = "bold",
-    size = 9
+    fontface = "bold", size = 9
   ) +
   annotate(
     geom = "text",
-    x = 0.5,
-    y = 0.07,
+    x = 0.5, y = 0.07,
     label = "To ...\n From ...",
     colour = "red3",
-    fontface = "bold",
-    size = 5
+    fontface = "bold", size = 5
   )
 s8
 ```
 
 # Sending Christmas cards in R {background-color="#2F4F4F"}
 
-## Email options
+## Email your Christmas card
+
+::: columns
+::: {.column}
+
+* {blastula}: a package for creating and sending HTML emails from R.
+
+* {gmailR}: a package for sending emails via the Gmail’s RESTful API.
+
+* {RDCOMClient}: a Windows-specific package for sending emails in R from
+the Outlook app. 
+
+... and several other email R packages!
+
+:::
+
+::: {.column}
+![](images/blastula.png){fig-align="center" fig-alt="Hex sticker for blastula package" width=70%}
+:::
+
+:::
 
 ## {ggirl}
 
@@ -343,15 +355,13 @@ s8
 #| label: ggirl
 library(ggirl)
 contact_email <- "fakeemailforreal@gmail.com"
-
 send_address_1 <- address(
-  name = "Fake Personname", address_line_1 = "250 North Ave",
+  name = "Fake Personname",
+  address_line_1 = "250 North Ave",
   city = "Boston", state = "MA",
   postal_code = "22222", country = "US"
 )
-
 message_1 <- "This plot made me think of you!"
-
 ggpostcard(
   plot,
   contact_email,
@@ -374,9 +384,40 @@ ggpostcard(
 
 ## {ggirl}
 
-![](images/ggirl-examples.png){fig-align="center" fig-alt="Screenshot of ggirl example from GitHub" width="100%"}
+::: columns
+::: {.column width="10%"}
+:::
 
-## 
+::: {.column width="80%"}
+
+![](images/ggirl-examples.png){fig-align="center" fig-alt="Screenshot of ggirl example from GitHub"}
+
+:::
+
+::: {.column width="10%"}
+:::
+
+:::
+
+## Links
+
+::: columns
+::: {.column}
+
+Slides: [nrennie.github.io/oxford-RUG-christmas-cards](https://nrennie.github.io/oxford-RUG-christmas-cards)
+
+<br>
+
+GitHub: [github.com/nrennie/oxford-RUG-christmas-cards](https://github.com/nrennie/oxford-RUG-christmas-cards)
+
+:::
+::: {.column}
+
+![](images/ggsnowman.png){fig-align="center" fig-alt="snowman made with ggplot2" width="70%"}
+:::
+:::
+
+## Contact
 
 ::: columns
 ::: {.column}
@@ -394,7 +435,7 @@ ggpostcard(
 :::
 ::: {.column}
 
-![](images/lancs.jpg){fig-align="center" fig-alt="ggflowchart hex sticker logo" width=70%}
+![](../slides/_extensions/nrSlides/logo.png){fig-align="center" fig-alt="ggflowchart hex sticker logo" width=50%}
 
 :::
 :::
