@@ -58,6 +58,28 @@ xmasepitree(year = 2023)
 :::
 :::
 
+## `snow` Quarto extension
+
+::: columns 
+::: {.column width="50%"}
+
+```bash
+quarto install extension emilhvitfeldt/quarto-snow
+```
+
+<br>
+
+GitHub: [github.com/EmilHvitfeldt/quarto-snow](https://github.com/EmilHvitfeldt/quarto-snow)
+
+:::
+
+::: {.column width="50%"}
+
+![](images/snow.gif){fig-align="center" fig-alt="Gif of falling snow against a set of slides" width=90%}
+
+:::
+:::
+
 # Let's build a snowman! {background-color="#2F4F4F"}
 
 ## R packages we need
