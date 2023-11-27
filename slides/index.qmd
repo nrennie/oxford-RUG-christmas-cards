@@ -254,15 +254,38 @@ s5 <- s4 +
 s5
 ```
 
-
-## and a hat!
+## ... and sticks for arms ...
 
 ```{r}
 #| label: snowman6
 #| eval: true
 #| echo: true
 #| output-location: column
-s6 <- s5 +
+s6 <- s5 + 
+  annotate(
+    geom = "segment",
+    x = 0.7, xend = 0.85, y = 0.3, yend = 0.4,
+    colour = "chocolate4",
+    linewidth = 2
+  ) +
+  annotate(
+    geom = "segment",
+    x = 0.46, xend = 0.33, y = 0.3, yend = 0.4,
+    colour = "chocolate4",
+    linewidth = 2
+  )
+s6
+```
+
+
+## and a hat!
+
+```{r}
+#| label: snowman7
+#| eval: true
+#| echo: true
+#| output-location: column
+s7 <- s6 +
   annotate(
     geom = "rect",
     xmin = 0.46, xmax = 0.74,
@@ -275,7 +298,7 @@ s6 <- s5 +
     ymin = 0.56, ymax = 0.73,
     fill = "brown"
   )
-s6
+s7
 ```
 
 ## Create a carror for a nose with {sf}...
@@ -303,28 +326,28 @@ plot(nose)
 ## ... and add it to the snowman
 
 ```{r}
-#| label: snowman7
+#| label: snowman8
 #| eval: true
 #| echo: true
 #| output-location: column
-s7 <- s6 +
+s8 <- s7 +
   geom_sf(
     data = nose,
     fill = "orange",
     colour = "orange"
   ) +
   coord_sf(expand = FALSE)
-s7
+s8
 ```
 
 ## Finally add a Christmas message!
 
 ```{r}
-#| label: snowman8
+#| label: snowman9
 #| eval: true
 #| echo: true
 #| output-location: column
-s8 <- s7 +
+s9 <- s8 +
   annotate(
     geom = "text",
     x = 0.5, y = 0.95,
@@ -339,7 +362,7 @@ s8 <- s7 +
     colour = "red3",
     fontface = "bold", size = 5
   )
-s8
+s9
 ```
 
 # Sending Christmas cards in R {background-color="#2F4F4F"}

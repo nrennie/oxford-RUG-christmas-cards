@@ -69,8 +69,25 @@ s5 <- s4 +
   scale_size_identity()
 s5
 
+# add sticks for arms
+s6 <- s5 + 
+  annotate(
+    geom = "segment",
+    x = 0.7, xend = 0.85, y = 0.3, yend = 0.4,
+    colour = "chocolate4",
+    linewidth = 2
+  ) +
+  annotate(
+    geom = "segment",
+    x = 0.46, xend = 0.33, y = 0.3, yend = 0.4,
+    colour = "chocolate4",
+    linewidth = 2
+  )
+s6
+
+
 # add hat
-s6 <- s5 +
+s7 <- s6 +
   annotate(
     geom = "rect",
     xmin = 0.46,
@@ -87,7 +104,7 @@ s6 <- s5 +
     ymax = 0.73,
     fill = "brown"
   )
-s6
+s7
 
 # add nose
 nose_pts <- matrix(
@@ -101,17 +118,18 @@ nose_pts <- matrix(
   byrow = TRUE
 )
 nose <- st_polygon(list(nose_pts))
-s7 <- s6 +
+plot(nose)
+s8 <- s7 +
   geom_sf(
     data = nose,
     fill = "orange",
     colour = "orange"
   ) +
   coord_sf(expand = FALSE)
-s7
+s8
 
 # add text
-s8 <- s7 +
+s9 <- s8 +
   annotate(
     geom = "text",
     x = 0.5,
@@ -130,4 +148,4 @@ s8 <- s7 +
     fontface = "bold",
     size = 5
   )
-s8
+s9
