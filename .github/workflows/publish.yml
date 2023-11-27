@@ -26,7 +26,7 @@ jobs:
           
       - name: Install dependencies
         run: |
-          install.packages(c("ggplot2", "sf", "ggforce"))
+          install.packages(c("ggplot2", "sf", "ggforce", "rmarkdown"))
         shell: Rscript {0}
 
       - name: Render and Publish
